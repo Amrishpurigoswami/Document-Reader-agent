@@ -16,7 +16,9 @@ LangChain
 LangChain OpenAI
 OpenAI API
 Python Dotenv
+
 Project Structure
+
 project/
 │
 ├── app.py
