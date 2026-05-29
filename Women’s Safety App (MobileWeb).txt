@@ -1,0 +1,197 @@
+Women’s Safety App (Mobile/Web)
+
+1. Project overview
+
+
+- App name: ALITA
+
+- Primary goal: Aggregate local women’s safety resources (helplines, shelters, hospitals, police), show on a map, provide safety tips, and a panic SOS button that sends location to trusted contacts.
+- Platforms: Android studie
+- Target regions/cities: Delhi, Mumbai, and “auto by device location”]
+- Languages: English, Hindi (I should first ask user or which language for User prefer. )
+
+
+2. Tech stack and libraries
+
+
+- Android (for mobile):
+
+- Language/UI: Kotlin + Jetpack Compose + Material 3
+- Maps: Google Maps SDK for Android
+- Location: Fused Location Provider Client
+- Background/Work: Work Manager 
+- Local DB: Room (for cached resources and trusted contacts)
+
+
+
+
+
+3. Map of local resources
+
+
+- Categories: Helplines, Police Stations, Shelters, Hospitals.
+- Data source(s): online
+
+- Static seed JSON bundled in app: Yes, provide CSV/JSON or ask for sample
+- Remote API(s): URLs 
+
+
+
+- Marker details:
+
+- Fields: name, phone, address, hours, type, lat/lng.
+- Filters: check only Police and Hospitals to hide Helplines and Shelters.
+           24/7: always open
+           Show only places within a radius of the user’s location
+- Sorting: After filtering, order the results from nearest to farthest to the user’s current location.
+
+
+
+- Map behaviors:
+
+- User location indicator: On
+- Tap marker to see sheet with quick actions (Call/SMS/Navigate): Yes
+- Clustering: Yes
+
+
+
+
+
+4. Emergency actions and quick access
+
+
+- Emergency numbers: 112, local helplines; show pinned shortcuts: Yes
+- Quick actions:
+
+- Call: direct ACTION_CALL (Android) 
+- SMS: prefilled SOS text with GPS link Nearby devices like neighborhoods are in range device to send them SOS messages that this person is in danger.
+- Share location: share intent Android 
+
+
+
+- always-visible entry (Android): add persistent notification shortcut]
+
+
+5. SOS/Panic button details
+
+
+- Button placement: Large, prominent on home; accessible from all screens.
+- Trigger UX: Single tap with confirm dialog or
+- Actions on trigger:
+
+
+- Send SMS to trusted contacts with message: “PAPA JI needs help. Live location: [https://maps.google.com ”
+- Optional auto-call number: [e.g., 112 or trusted contact]
+- Log timestamp + location locally
+
+
+
+- Trusted contacts management:
+
+- Add/edit/remove contacts; store securely in Room/local storage
+- Minimum 1, max [N]; validate phone format.
+
+
+
+
+
+6. Safety tips library
+
+
+- Categories: Street harassment, First-aid, Reporting steps, Travel safety, Digital safety. Detailer regarding these topics in deep by clicking on that button
+- Content source: Provide copy or ask to scaffold with sample, editable JSON/Markdown
+- Features: Search, category filters, offline availability.
+
+
+7. Offline/minimal-data support
+
+
+- What must work offline:
+
+- View saved resources list with last-known distances
+- SOS with last-known location if GPS unavailable, include “last known/approximate” note
+- Safety tips library fully cached
+
+
+
+- Caching strategy:
+
+- First run: bundle seed data; subsequent updates via background fetch when online
+- Store in Room Android Studie
+
+
+
+
+8. Privacy and permissions
+
+
+- Permissions requested and timing:
+
+- Location foreground; optional background for continuous tracking: Yes
+- SMS send (Android only): Yes
+- Phone call (Android): [Yes/No]
+- Contacts read (if importing trusted contacts): [Yes/No]
+
+
+
+- Data policy:
+
+- No analytics, no 3rd-party sharing
+- All personal data stays on device
+- Clear, human-readable privacy policy page in-app; include consent toggles
+
+
+
+
+
+9. UI/Design constraints
+
+
+- Color system (3–5 colors max):
+
+- Primary: , teal
+- Neutrals:  text, muted
+- Accent(s):  amber
+
+
+
+- Typography:
+
+- Headings: [Sans font]
+- Body: [Sans font]
+
+
+
+- Layout: Mobile-first, large SOS button, clear contrast and a11y; avoid gradients.
+- Iconography: Consistent, 20–24px, no emojis.
+
+
+10. Navigation and structure
+
+
+- Tabs or Drawer: [Home (Map), SOS, Resources, Tips, Settings]
+- Settings include: Manage contacts, permissions, privacy policy, and offline data refresh.
+
+
+11. Deliverables
+
+
+- For Android:
+
+- Android Studio project: Gradle files, MainActivity, Compose screens, Room entities/DAOs, permissions handling, Map screen, SOS service.
+
+
+
+12. Acceptance criteria
+
+
+- Map shows categorized resources with call/navigation actions
+- SOS sends SMS with GPS link to all trusted contacts and optionally auto-calls
+- Tips searchable offline
+- Works without network for core flows
+- Privacy policy present; permissions requested just-in-time
+
+
+ After detecting emergency keyword, there should be a siren ring started for 8 seconds and if user doesn't close it, then SOS is directly send it to all of them.
+
+ After downloading this app the user must give access to the app that whenever user say any type of keyword like help on or any other thing then there is SOS signal is forwarded to every emergency points free Hey Cortana play

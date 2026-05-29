@@ -1,0 +1,28 @@
+Sample Text File
+================
+
+This is a sample text file in the TripleG project.
+You can use this file to store any sample data or notes.
+
+Project Structure:
+- main.py: Main Python application (AI Study Assistant using Groq API)
+- .env: Environment variables (contains GROQ_API_KEY)
+- venv/: Virtual environment with all installed libraries
+- sample.txt: This file
+
+Setup Instructions:
+1. Activate the virtual environment
+2. Update the GROQ_API_KEY in .env file with your actual API key
+3. Run the application: python main.py
+
+Dependencies installed:
+- langchain
+- langchain-community
+- langchain-core
+- langchain-groq
+- sentence-transformers
+- faiss-cpu
+- transformers
+- torch
+- pypdf
+- python-dotenv
